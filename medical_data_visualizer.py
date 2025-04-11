@@ -20,14 +20,8 @@ def draw_cat_plot():
     df_cat = pd.melt(df,
                      id_vars=['cardio'],
                      value_vars=['active', 'alco', 'cholesterol', 'gluc', 'overweight', 'smoke'])
-
-    # 6 - Group and reformat the data
     df_cat = df_cat.value_counts().reset_index(name='total')
-
-    # 7 - Rename columns for clarity
     df_cat.columns = ['cardio', 'variable', 'value', 'total']
-
-    # 8 - Draw the catplot with 'sns.catplot()'
     fig = sns.catplot(data=df_cat,
                       x='variable',
                       y='total',
